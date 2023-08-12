@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -46,15 +47,18 @@ class AdminController extends Controller
         $data->email = $request->email;
 
         if($request->file('profile_image')) {
+            if(isset($data->profile_image)){
+                Storage::delete("public/".$data->foto);
+            }
            $file = $request->file('profile_image');
            $filename = date('YmdHi').$file->getClientOriginalName();
            $extension = $file->getClientOriginalExtension();
 
            $uploadDoc = $file->storeAs(
-            'upload/admin_images',
-            $filename.'.'.$extension,
-            ['disk' => 'public']
-        );
+                'upload/admin_images',
+                $filename.'.'.$extension,
+                ['disk' => 'public']
+            );
 
            $data['profile_image'] = $uploadDoc;
         }
