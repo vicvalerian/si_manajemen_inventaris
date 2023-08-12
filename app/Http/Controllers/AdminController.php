@@ -48,15 +48,14 @@ class AdminController extends Controller
 
         if($request->file('profile_image')) {
             if(isset($data->profile_image)){
-                Storage::delete("public/".$data->foto);
+                Storage::delete("public/".$data->profile_image);
             }
            $file = $request->file('profile_image');
            $filename = date('YmdHi').$file->getClientOriginalName();
-           $extension = $file->getClientOriginalExtension();
 
            $uploadDoc = $file->storeAs(
                 'upload/admin_images',
-                $filename.'.'.$extension,
+                $filename,
                 ['disk' => 'public']
             );
 

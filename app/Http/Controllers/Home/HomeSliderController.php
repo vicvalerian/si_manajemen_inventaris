@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\HomeSlide;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Image;
 
 class HomeSliderController extends Controller
@@ -22,7 +21,7 @@ class HomeSliderController extends Controller
 
         if ($request->file('home_slide')) {
             if (isset($homeSlide->home_slide)) {
-                Storage::delete("public/" . $homeSlide->home_slide);
+                @unlink($homeSlide->home_slide);
             }
 
             $image = $request->file('home_slide');
