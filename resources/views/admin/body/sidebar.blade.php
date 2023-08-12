@@ -17,7 +17,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-    
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
@@ -37,6 +37,17 @@
                         <li><a href="{{ route('about.page') }}">Halaman Info</a></li>
                         <li><a href="{{ route('about.multi.image') }}">Tambah Gambar</a></li>
                         <li><a href="{{ route('all.multi.image') }}">Tampil Gambar</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Pengaturan Portofolio</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('all.portfolio') }}">Halaman Portofolio</a></li>
+                        <li><a href="{{ route('add.portfolio') }}">Tambah Portofolio</a></li>
                     </ul>
                 </li>
 
