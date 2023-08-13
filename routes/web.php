@@ -5,6 +5,7 @@ use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\ContactController;
+use App\Http\Controllers\Home\DemoController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
@@ -30,19 +31,25 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//Admin All Route
-Route::controller(AdminController::class)->group(function (){
-    Route::get('/admin/logout', 'destroy')->name('admin.logout');
 
-    Route::get('/admin/profile', 'profile')->name('admin.profile');
-
-    Route::get('/edit/profile', 'edit')->name('edit.profile');
-    Route::post('/store/profile', 'storeProfile')->name('store.profile');
-
-    Route::get('/change/password', 'changePassword')->name('change.password');
-    Route::post('/update/password', 'UpdatePassword')->name('update.password');
+Route::controller(DemoController::class)->group(function () {
+    Route::get('/', 'homeMain')->name('home');
 });
 
+//Admin All Route
+Route::middleware(['auth'])->group(function () {
+    Route::controller(AdminController::class)->group(function (){
+        Route::get('/admin/logout', 'destroy')->name('admin.logout');
+
+        Route::get('/admin/profile', 'profile')->name('admin.profile');
+
+        Route::get('/edit/profile', 'edit')->name('edit.profile');
+        Route::post('/store/profile', 'storeProfile')->name('store.profile');
+
+        Route::get('/change/password', 'changePassword')->name('change.password');
+        Route::post('/update/password', 'UpdatePassword')->name('update.password');
+    });
+});
 //Home Slide All Route
 Route::controller(HomeSliderController::class)->group(function (){
     Route::get('/home/slide', 'homeSlider')->name('home.slide');
@@ -78,6 +85,8 @@ Route::controller(PortfolioController::class)->group(function (){
     Route::get('/delete/portfolio/{id}', 'deletePortfolio')->name('delete.portfolio');
 
     Route::get('/portfolio/details/{id}', 'portfolioDetails')->name('portfolio.details');
+
+    Route::get('/portfolio', 'homePortfolio')->name('home.portfolio');
 });
 
  // Blog Category All Routes 

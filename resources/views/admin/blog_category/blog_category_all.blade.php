@@ -8,9 +8,6 @@
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                         <h4 class="mb-sm-0">Kategori Blog</h4>
-
-
-
                     </div>
                 </div>
             </div>
@@ -30,10 +27,9 @@
                                         <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                    @php($i = 1)
-                                    @foreach ($blogCategory as $item)
+                                    @foreach ($blogCategory as $key => $item)
                                         <tr>
-                                            <td> {{ $i++ }} </td>
+                                            <td> {{ $key+1}} </td>
                                             <td> {{ $item->blog_category }} </td>
                                             <td>
                                                 <a href="{{ route('edit.blog.category', $item->id) }}"

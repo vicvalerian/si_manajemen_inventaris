@@ -22,12 +22,6 @@ class BlogCategoryController extends Controller
 
     public function storeBlogCategory(Request $request)
     {
-        $request->validate([
-            'blog_category' => 'required'
-        ], [
-            'blog_category.required' => 'Nama kategori blog tidak boleh kosong!',
-        ]);
-
         BlogCategory::insert([
             'blog_category' => $request->blog_category,
 
