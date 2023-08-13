@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\BlogCategoryController;
+use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
@@ -74,6 +76,37 @@ Route::controller(PortfolioController::class)->group(function (){
     Route::get('/delete/portfolio/{id}', 'deletePortfolio')->name('delete.portfolio');
 
     Route::get('/portfolio/details/{id}', 'portfolioDetails')->name('portfolio.details');
+});
+
+ // Blog Category All Routes 
+ Route::controller(BlogCategoryController::class)->group(function () {
+    Route::get('/all/blog/category', 'allBlogCategory')->name('all.blog.category');
+
+    Route::get('/add/blog/category', 'addBlogCategory')->name('add.blog.category');
+    Route::post('/store/blog/category', 'storeBlogCategory')->name('store.blog.category');
+
+    Route::get('/edit/blog/category/{id}', 'editBlogCategory')->name('edit.blog.category');
+    Route::post('/update/blog/category/{id}', 'updateBlogCategory')->name('update.blog.category');
+
+    Route::get('/delete/blog/category/{id}', 'deleteBlogCategory')->name('delete.blog.category');
+});
+
+ // Blog All Routes 
+ Route::controller(BlogController::class)->group(function () {
+    Route::get('/all/blog', 'allBlog')->name('all.blog');
+
+    Route::get('/add/blog', 'addBlog')->name('add.blog');
+    Route::post('/store/blog', 'storeBlog')->name('store.blog');
+
+    Route::get('/edit/blog/{id}', 'editBlog')->name('edit.blog');
+    Route::post('/update/blog', 'updateBlog')->name('update.blog');
+
+    Route::get('/delete/blog/{id}', 'deleteBlog')->name('delete.blog');
+
+    Route::get('/blog/details/{id}', 'blogDetails')->name('blog.details');
+    Route::get('/category/blog/{id}', 'categoryBlog')->name('category.blog');
+
+    Route::get('/blog', 'homeBlog')->name('home.blog');
 });
 
 Route::middleware('auth')->group(function () {
