@@ -18,10 +18,13 @@
                     </a>
                 </li>
 
+                {{-- Frontend section start --}}
+                {{-- <li class="menu-title">Halaman</li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>Pengaturan Beranda</span>
+                        <span>Beranda</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('home.slide') }}">Home Slide</a></li>
@@ -31,7 +34,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-layout-3-line"></i>
-                        <span>Pengaturan Info</span>
+                        <span>Info</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('about.page') }}">Halaman Info</a></li>
@@ -43,15 +46,13 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>Pengaturan Portofolio</span>
+                        <span>Portofolio</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('all.portfolio') }}">Halaman Portofolio</a></li>
                         <li><a href="{{ route('add.portfolio') }}">Tambah Portofolio</a></li>
                     </ul>
                 </li>
-
-                <li class="menu-title">Pages</li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -94,8 +95,10 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('contact.message') }}">Tampil Pesan</a></li>
                     </ul>
-                </li>
+                </li> --}}
+                {{-- Frontend section end --}}
 
+                <li class="menu-title">Pages</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-account-circle-line"></i>
