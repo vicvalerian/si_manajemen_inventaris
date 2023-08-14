@@ -9,6 +9,7 @@ use App\Http\Controllers\Home\DemoController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,19 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+// Customer All Route 
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/customer/all', 'customerAll')->name('customer.all');
+
+    Route::get('/customer/add', 'customerAdd')->name('customer.add');
+    Route::post('/customer/store', 'customerStore')->name('customer.store');
+
+    Route::get('/customer/edit/{id}', 'customerEdit')->name('customer.edit');
+    Route::post('/customer/update', 'customerUpdate')->name('customer.update');
+
+    Route::get('/customer/delete/{id}', 'CustomerDelete')->name('customer.delete');
+});
+
 // Supplier All Route 
 Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier/all', 'supplierAll')->name('supplier.all');
@@ -59,7 +73,7 @@ Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier/add', 'supplierAdd')->name('supplier.add');
     Route::post('/supplier/store', 'supplierStore')->name('supplier.store');
 
-    Route::get('/supplier/edit/{id}', 'supplierEdit')->name('supplier.edit'); 
+    Route::get('/supplier/edit/{id}', 'supplierEdit')->name('supplier.edit');
     Route::post('/supplier/update', 'supplierUpdate')->name('supplier.update');
 
     Route::get('/supplier/delete/{id}', 'SupplierDelete')->name('supplier.delete');
