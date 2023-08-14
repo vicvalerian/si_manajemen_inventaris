@@ -9,6 +9,7 @@ use App\Http\Controllers\Home\DemoController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +39,7 @@ Route::controller(DemoController::class)->group(function () {
 
 //Admin All Route
 Route::middleware(['auth'])->group(function () {
-    Route::controller(AdminController::class)->group(function (){
+    Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/logout', 'destroy')->name('admin.logout');
 
         Route::get('/admin/profile', 'profile')->name('admin.profile');
@@ -50,14 +51,28 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/password', 'UpdatePassword')->name('update.password');
     });
 });
+
+// Supplier All Route 
+Route::controller(SupplierController::class)->group(function () {
+    Route::get('/supplier/all', 'supplierAll')->name('supplier.all');
+
+    Route::get('/supplier/add', 'supplierAdd')->name('supplier.add');
+    Route::post('/supplier/store', 'supplierStore')->name('supplier.store');
+
+    Route::get('/supplier/edit/{id}', 'supplierEdit')->name('supplier.edit'); 
+    Route::post('/supplier/update', 'supplierUpdate')->name('supplier.update');
+
+    Route::get('/supplier/delete/{id}', 'SupplierDelete')->name('supplier.delete');
+});
+
 //Home Slide All Route
-Route::controller(HomeSliderController::class)->group(function (){
+Route::controller(HomeSliderController::class)->group(function () {
     Route::get('/home/slide', 'homeSlider')->name('home.slide');
     Route::post('/update/slider', 'updateSlider')->name('update.slider');
 });
 
 //About All Route
-Route::controller(AboutController::class)->group(function (){
+Route::controller(AboutController::class)->group(function () {
     Route::get('/about/page', 'aboutPage')->name('about.page');
     Route::post('/update/about', 'updateAbout')->name('update.about');
     Route::get('/about', 'homeAbout')->name('home.about');
@@ -73,7 +88,7 @@ Route::controller(AboutController::class)->group(function (){
 });
 
 //Portfolio All Route
-Route::controller(PortfolioController::class)->group(function (){
+Route::controller(PortfolioController::class)->group(function () {
     Route::get('/all/portfolio', 'allPortfolio')->name('all.portfolio');
 
     Route::get('/add/portfolio', 'addPortfolio')->name('add.portfolio');
@@ -89,8 +104,8 @@ Route::controller(PortfolioController::class)->group(function (){
     Route::get('/portfolio', 'homePortfolio')->name('home.portfolio');
 });
 
- // Blog Category All Routes 
- Route::controller(BlogCategoryController::class)->group(function () {
+// Blog Category All Routes 
+Route::controller(BlogCategoryController::class)->group(function () {
     Route::get('/all/blog/category', 'allBlogCategory')->name('all.blog.category');
 
     Route::get('/add/blog/category', 'addBlogCategory')->name('add.blog.category');
@@ -102,7 +117,7 @@ Route::controller(PortfolioController::class)->group(function (){
     Route::get('/delete/blog/category/{id}', 'deleteBlogCategory')->name('delete.blog.category');
 });
 
- // Blog All Routes 
+// Blog All Routes 
 Route::controller(BlogController::class)->group(function () {
     Route::get('/all/blog', 'allBlog')->name('all.blog');
 
@@ -126,14 +141,14 @@ Route::controller(FooterController::class)->group(function () {
     Route::post('/update/footer', 'UpdateFooter')->name('update.footer');
 });
 
- // Contact All Route 
- Route::controller(ContactController::class)->group(function () {
+// Contact All Route 
+Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'contact')->name('contact.me');
 
     Route::post('/store/message', 'storeMessage')->name('store.message');
 
-    Route::get('/contact/message', 'contactMessage')->name('contact.message');   
-    Route::get('/delete/message/{id}', 'deleteMessage')->name('delete.message');  
+    Route::get('/contact/message', 'contactMessage')->name('contact.message');
+    Route::get('/delete/message/{id}', 'deleteMessage')->name('delete.message');
 });
 
 Route::middleware('auth')->group(function () {
@@ -142,4 +157,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
