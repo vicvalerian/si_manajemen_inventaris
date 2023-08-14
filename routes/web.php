@@ -9,6 +9,7 @@ use App\Http\Controllers\Home\DemoController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\UnitController;
@@ -80,8 +81,9 @@ Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier/delete/{id}', 'SupplierDelete')->name('supplier.delete');
 });
 
+// Unit All Route 
 Route::controller(UnitController::class)->group(function () {
-    Route::get('/unit/all', 'unitAll')->name('unit.all'); 
+    Route::get('/unit/all', 'unitAll')->name('unit.all');
 
     Route::get('/unit/add', 'unitAdd')->name('unit.add');
     Route::post('/unit/store', 'unitStore')->name('unit.store');
@@ -90,6 +92,19 @@ Route::controller(UnitController::class)->group(function () {
     Route::post('/unit/update', 'unitUpdate')->name('unit.update');
 
     Route::get('/unit/delete/{id}', 'unitDelete')->name('unit.delete');
+});
+
+// Category All Route 
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/category/all', 'categoryAll')->name('category.all');
+
+    Route::get('/category/add', 'categoryAdd')->name('category.add');
+    Route::post('/category/store', 'categoryStore')->name('category.store');
+
+    Route::get('/category/edit/{id}', 'categoryEdit')->name('category.edit');
+    Route::post('/category/update', 'categoryUpdate')->name('category.update');
+
+    Route::get('/category/delete/{id}', 'categoryDelete')->name('category.delete');
 });
 
 //Home Slide All Route
