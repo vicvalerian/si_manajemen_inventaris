@@ -12,6 +12,7 @@ use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\DefaultController;
+use App\Http\Controllers\Pos\InvoiceController;
 use App\Http\Controllers\Pos\ProductController;
 use App\Http\Controllers\Pos\PurchaseController;
 use App\Http\Controllers\Pos\SupplierController;
@@ -140,6 +141,15 @@ Route::controller(PurchaseController::class)->group(function () {
 Route::controller(DefaultController::class)->group(function () {
     Route::get('/get-category', 'getCategory')->name('get-category');
     Route::get('/get-product', 'getProduct')->name('get-product');
+    Route::get('/check-product', 'GetStock')->name('check-product-stock'); 
+});
+
+// Invoice All Route
+Route::controller(InvoiceController::class)->group(function () {
+    Route::get('/invoice/all', 'invoiceAll')->name('invoice.all'); 
+
+    Route::get('/invoice/add', 'invoiceAdd')->name('invoice.add');
+    Route::post('/invoice/store', 'invoiceStore')->name('invoice.store');
 });
 
 //Home Slide All Route
