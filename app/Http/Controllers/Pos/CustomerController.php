@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pos;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Image;
 use Auth;
@@ -116,5 +117,17 @@ class CustomerController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function creditCustomer()
+    {
+        $allData = Payment::whereIn('paid_status', ['full_due', 'partial_paid'])->get();
+        return view('backend.customer.customer_credit', compact('allData'));
+    }
+
+    public function creditCustomerPrintPdf()
+    {
+        $allData = Payment::whereIn('paid_status', ['full_due', 'partial_paid'])->get();
+        return view('backend.pdf.customer_credit_pdf', compact('allData'));
     }
 }

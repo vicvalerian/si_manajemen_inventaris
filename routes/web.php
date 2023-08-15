@@ -73,7 +73,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/customer/edit/{id}', 'customerEdit')->name('customer.edit');
         Route::post('/customer/update', 'customerUpdate')->name('customer.update');
 
-        Route::get('/customer/delete/{id}', 'CustomerDelete')->name('customer.delete');
+        Route::get('/customer/delete/{id}', 'customerDelete')->name('customer.delete');
+
+        Route::get('/credit/customer', 'creditCustomer')->name('credit.customer');
+        Route::get('/credit/customer/print/pdf', 'creditCustomerPrintPdf')->name('credit.customer.print.pdf');
     });
 
     // Supplier All Route 
