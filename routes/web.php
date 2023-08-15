@@ -141,12 +141,12 @@ Route::controller(PurchaseController::class)->group(function () {
 Route::controller(DefaultController::class)->group(function () {
     Route::get('/get-category', 'getCategory')->name('get-category');
     Route::get('/get-product', 'getProduct')->name('get-product');
-    Route::get('/check-product', 'GetStock')->name('check-product-stock'); 
+    Route::get('/check-product', 'GetStock')->name('check-product-stock');
 });
 
 // Invoice All Route
 Route::controller(InvoiceController::class)->group(function () {
-    Route::get('/invoice/all', 'invoiceAll')->name('invoice.all'); 
+    Route::get('/invoice/all', 'invoiceAll')->name('invoice.all');
 
     Route::get('/invoice/add', 'invoiceAdd')->name('invoice.add');
     Route::post('/invoice/store', 'invoiceStore')->name('invoice.store');
@@ -156,6 +156,9 @@ Route::controller(InvoiceController::class)->group(function () {
 
     Route::get('/invoice/approve/{id}', 'invoiceApprove')->name('invoice.approve');
     Route::post('/approval/store/{id}', 'approvalStore')->name('approval.store');
+
+    Route::get('/print/invoice/list', 'printInvoiceList')->name('print.invoice.list');
+    Route::get('/print/invoice/{id}', 'printInvoice')->name('print.invoice');
 });
 
 //Home Slide All Route
