@@ -150,6 +150,9 @@ Route::controller(InvoiceController::class)->group(function () {
 
     Route::get('/invoice/add', 'invoiceAdd')->name('invoice.add');
     Route::post('/invoice/store', 'invoiceStore')->name('invoice.store');
+
+    Route::get('/invoice/pending/list', 'PendingList')->name('invoice.pending.list');
+    Route::get('/invoice/delete/{id}', 'InvoiceDelete')->name('invoice.delete');
 });
 
 //Home Slide All Route
