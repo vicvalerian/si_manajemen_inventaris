@@ -29,7 +29,7 @@
                                         <th>Customer Name</th>
                                         <th>Invoice No </th>
                                         <th>Date</th>
-                                        <th>Due Amount</th>
+                                        <th>Paid Amount</th>
                                         <th>Action</th>
                                 </thead>
                                 <tbody>
@@ -39,7 +39,7 @@
                                             <td> {{ $item['customer']['name'] }} </td>
                                             <td> {{ $item['invoice']['invoice_no'] }}</td>
                                             <td> {{ date('d-m-Y', strtotime($item['invoice']['date'])) }} </td>
-                                            <td> {{ $item->due_amount }} </td>
+                                            <td> {{ $item->paid_amount }} </td>
                                             <td>
                                                 <a href="{{ route('customer.invoice.details.pdf', $item->invoice_id) }}"
                                                     class="btn btn-info sm" target="_black" title="Customer Details"> <i

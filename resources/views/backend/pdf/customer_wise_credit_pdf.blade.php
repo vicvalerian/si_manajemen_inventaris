@@ -7,11 +7,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Customer Paid Report</h4>
+                        <h4 class="mb-sm-0">Customer Wise Credit Report</h4>
+
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);"> </a></li>
-                                <li class="breadcrumb-item active">Customer Paid Report</li>
+                                <li class="breadcrumb-item active">Customer Wise Credit Report</li>
                             </ol>
                         </div>
 
@@ -24,11 +25,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="col-12">
                                     <div class="invoice-title">
-
                                         <h3>
                                             <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo"
                                                 height="24" /> Sistem Informasi Manajemen Inventaris
@@ -69,15 +68,14 @@
                                                             </td>
                                                             <td class="text-center"><strong>Date</strong>
                                                             </td>
-                                                            <td class="text-center"><strong>Paid Amount </strong>
+                                                            <td class="text-center"><strong>Due Amount </strong>
                                                             </td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <!-- foreach ($order->lineItems as $line) or some such thing here -->
-
                                                         @php
-                                                            $total_paid = '0';
+                                                            $total_due = '0';
                                                         @endphp
                                                         @foreach ($allData as $key => $item)
                                                             <tr>
@@ -89,10 +87,11 @@
                                                                 <td class="text-center">
                                                                     {{ date('d-m-Y', strtotime($item['invoice']['date'])) }}
                                                                 </td>
-                                                                <td class="text-center"> {{ $item->paid_amount }} </td>
+                                                                <td class="text-center"> {{ $item->due_amount }} </td>
+
                                                             </tr>
                                                             @php
-                                                                $total_paid += $item->paid_amount;
+                                                                $total_due += $item->due_amount;
                                                             @endphp
                                                         @endforeach
 
@@ -101,10 +100,10 @@
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line text-center">
-                                                                <strong>Grand Paid Amount</strong>
+                                                                <strong>Grand Due Amount</strong>
                                                             </td>
                                                             <td class="no-line text-end">
-                                                                <h4 class="m-0">${{ $total_paid }}</h4>
+                                                                <h4 class="m-0">${{ $total_due }}</h4>
                                                             </td>
                                                         </tr>
                                                     </tbody>

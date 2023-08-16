@@ -85,6 +85,10 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/paid/customer', 'paidCustomer')->name('paid.customer');
         Route::get('/paid/customer/print/pdf', 'paidCustomerPrintPdf')->name('paid.customer.print.pdf');
+
+        Route::get('/customer/wise/report', 'customerWiseReport')->name('customer.wise.report');
+        Route::get('/customer/wise/credit/report', 'customerWiseCreditReport')->name('customer.wise.credit.report');
+        Route::get('/customer/wise/paid/report', 'customerWisePaidReport')->name('customer.wise.paid.report');
     });
 
     // Supplier All Route 
