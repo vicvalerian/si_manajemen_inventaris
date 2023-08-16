@@ -105,7 +105,7 @@ class InvoiceController extends Controller
                             $payment_details->current_paid_amount = $request->estimated_amount;
                         } elseif ($request->paid_status == 'full_due') {
                             $payment->paid_amount = '0';
-                            $payment->due_amount = $request->estimated_amount;
+                            $payment->due_amount = $request->estimated_amount ?? 0;
                             $payment_details->current_paid_amount = '0';
                         } elseif ($request->paid_status == 'partial_paid') {
                             $payment->paid_amount = $request->paid_amount;
